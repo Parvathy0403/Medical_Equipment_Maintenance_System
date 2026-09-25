@@ -691,20 +691,8 @@ function captureInspectionSnapshot() {
         return;
     }
 
-    const canvas = document.createElement("canvas");
-    canvas.width = video.videoWidth || 640;
-    canvas.height = video.videoHeight || 480;
-    const ctx = canvas.getContext("2d");
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-    const snapshotImg = document.getElementById("inspectionSnapshot");
     const reportBox = document.getElementById("inspectionReportBox");
     
-    if (snapshotImg) {
-        snapshotImg.src = canvas.toDataURL("image/png");
-        snapshotImg.classList.remove("hidden");
-    }
-
     if (reportBox) {
         reportBox.innerHTML = `
             <div class="p-4 bg-teal-950/60 border border-teal-500/30 rounded-xl space-y-2 text-xs font-mono text-teal-200">
@@ -717,7 +705,7 @@ function captureInspectionSnapshot() {
         `;
     }
 
-    showToast("AI Visual Analysis", "Snapshot captured and analyzed successfully.", "success");
+    showToast("AI Visual Analysis", "Optical analysis scan completed successfully.", "success");
 }
 
 
