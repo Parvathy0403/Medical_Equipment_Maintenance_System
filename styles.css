@@ -1,0 +1,170 @@
+/* AI MedCare - Custom Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+:root {
+    --primary: #0f766e;
+    --primary-light: #14b8a6;
+    --primary-dark: #0d9488;
+    --bg-dark: #0b1329;
+    --card-dark: rgba(15, 23, 42, 0.75);
+    --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+}
+
+.font-mono-code {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Glassmorphism utilities */
+.glass {
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.glass-dark {
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark-card {
+    background: rgba(30, 41, 59, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Gradients */
+.gradient-text {
+    background: linear-gradient(135deg, #2dd4bf 0%, #38bdf8 50%, #ffffff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-teal {
+    background: linear-gradient(135deg, #0f766e 0%, #0284c7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-overlay {
+    background: linear-gradient(
+        135deg,
+        rgba(6, 78, 59, 0.96) 0%,
+        rgba(15, 118, 110, 0.85) 50%,
+        rgba(15, 23, 42, 0.92) 100%
+    );
+}
+
+/* Card hover animations */
+.card-hover {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 35px -10px rgba(15, 118, 110, 0.2), 0 10px 10px -5px rgba(15, 118, 110, 0.04);
+}
+
+/* Custom camera video flip */
+.camera-mirror {
+    transform: scaleX(-1);
+}
+
+/* AR Inspection Grid line animation */
+.scanner-line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #2dd4bf, #00ffcc, transparent);
+    box-shadow: 0 0 15px #2dd4bf;
+    animation: scan 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes scan {
+    0% { top: 5%; opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { top: 95%; opacity: 0.3; }
+}
+
+/* Floating animation */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+}
+
+.animate-float {
+    animation: float 5s ease-in-out infinite;
+}
+
+/* ECG Line animation */
+@keyframes ecgPulse {
+    0% { stroke-dashoffset: 1000; }
+    100% { stroke-dashoffset: 0; }
+}
+
+.ecg-path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: ecgPulse 4s linear infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #0f766e;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #14b8a6;
+}
+
+/* Audio wave animation */
+.audio-bar {
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    background-color: #2dd4bf;
+    border-radius: 2px;
+    animation: soundWave 1.2s ease-in-out infinite alternate;
+}
+
+.audio-bar:nth-child(2) { animation-delay: 0.2s; }
+.audio-bar:nth-child(3) { animation-delay: 0.4s; }
+.audio-bar:nth-child(4) { animation-delay: 0.1s; }
+.audio-bar:nth-child(5) { animation-delay: 0.3s; }
+
+@keyframes soundWave {
+    0% { height: 4px; opacity: 0.4; }
+    100% { height: 24px; opacity: 1; }
+}
